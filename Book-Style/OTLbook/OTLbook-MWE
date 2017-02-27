@@ -1,0 +1,15 @@
+\documentclass{mybook}
+\usepackage[utf8]{inputenc}
+
+\title{mybook}
+\author{gazaunga }
+\date{February 2017}
+
+\begin{document}
+%\maketitle
+\tableofcontents
+\clearpage
+\section*{This is it}
+\kant
+
+\end{document}
