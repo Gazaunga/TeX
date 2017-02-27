@@ -1,0 +1,14 @@
+\documentclass{OTLthesis}
+\usepackage[utf8]{inputenc}
+\usepackage{kantlipsum}
+\title{theses}
+\author{gazaunga }
+\date{February 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\kant
+\end{document}
