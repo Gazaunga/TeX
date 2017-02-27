@@ -1,3 +1,6 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{OTLbook}[2017/02/16 Custom LaTeX class]
+
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{memoir}
 }
