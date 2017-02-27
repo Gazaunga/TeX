@@ -1,1 +1,139 @@
-
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{tuform}[2009/11/20 v1.0 A Simple Form]
+\LoadClass[12pt,a4paper]{article}
+\RequirePackage{wasysym}
+\RequirePackage{palatino}
+\RequirePackage{microtype}
+\pagestyle{empty}
+\newcommand*{\@fillinfont}{\rmfamily}
+\newcommand*{\@formfont}{\sffamily}
+\newcommand*{\@unchecked}{\Square}
+\newcommand*{\@checked}{\XBox}
+\newcommand*{\@forenames}{}
+\newcommand*{\forenames}[1]{\renewcommand*{\@forenames}{#1}}
+\newcommand*{\@surname}{}
+\newcommand*{\surname}[1]{\renewcommand*{\@surname}{#1}}
+\newcommand*{\@address}{\rule{0pt}{1in}}
+\newcommand*{\address}[1]{\renewcommand*{\@address}{#1}}
+\newcommand*{\@comments}{\rule{0pt}{1in}}
+\newcommand*{\comments}[1]{\renewcommand*{\@comments}{#1}}
+\gender{male}\gender{female}
+\newcommand*{\reset@gender}{%
+  \def\gender@male{\@unchecked}%
+  \def\gender@female{\@unchecked}%
+}
+\reset@gender
+\newcommand*{\gender}[1]{%
+  \@ifundefined{gender@#1}%
+  {%
+    \ClassError{tuform}{Unknown gender `#1'}%
+    {Gender can either be `male' or `female'}%
+  }%
+  {%
+    \reset@gender
+    \@namedef{gender@#1}{\@checked}%
+  }%
+}
+\newcommand*{\reset@ageranges}{%
+  \@namedef{agerange@<18}{\@unchecked}%
+  \@namedef{agerange@18-30}{\@unchecked}%
+  \@namedef{agerange@31-40}{\@unchecked}%
+  \@namedef{agerange@41-60}{\@unchecked}%
+  \@namedef{agerange@>60}{\@unchecked}%
+}
+\newcommand*{\@validageranges}{%
+  {<18}{\textless18},%
+  {18-30}{18--30},%
+  {31-40}{31--40},%
+  {41-60}{41--60},%
+  {>60}{\textgreater60}%
+}
+\newcommand*{\get@agerange}[2]{%
+  \def\@agerange@label{#1}%
+  \def\@agerange@text{#2}%
+}
+\newcommand*{\reset@ageranges}{%
+  \@for\@agerange:=\@validageranges\do{%
+    \expandafter\get@agerange\@agerange
+    \@namedef{agerange@\@agerange@label}{\@unchecked}%
+  }%
+}
+\reset@ageranges
+\newcommand*{\agerange}[1]{%
+  \@ifundefined{agerange@#1}%
+  {%
+    \ClassError{simpleform}{Unknown age range `#1'}{}%
+  }%
+  {%
+    \reset@ageranges
+    \@namedef{agerange@#1}{\@checked}%
+  }%
+}
+\newcommand*{\agerange}[1]{%
+  \@ifundefined{agerange@#1}%
+  {%
+    \def\@ageoptions{}%
+    \def\@ageoptionssep{}%
+    \@for\@agerange:=\@validageranges\do{%
+       \expandafter\get@agerange\@agerange
+      \edef\@ageoptions{\@ageoptions\@ageoptionssep\@agerange@label}%
+      \def\@ageoptionssep{, }%
+    }%
+    \ClassError{simpleform}{Unknown age range `#1'}%
+      {Available options: \@ageoptions}%
+  }%
+  {%
+    \reset@ageranges
+    \@namedef{agerange@#1}{\@checked}%
+  }%
+}
+\newlength\boxwidth
+\newlength\underlinewidth
+\newcommand{\makeform}{%
+  \begin{center}\large\bfseries
+  A Simple Form
+  \end{center}
+  \noindent
+  {\renewcommand{\arraystretch}{1.5}%
+    \settowidth{\underlinewidth}{Forenames}%
+    \addtolength{\underlinewidth}{-\linewidth}%
+    \addtolength{\underlinewidth}{2\tabcolsep}%
+    \setlength{\underlinewidth}{-\underlinewidth}%
+    \begin{tabular}{@{}ll@{}}
+    Forenames & \@fillinfont
+      \underline{\makebox[\underlinewidth][l]{\@forenames}}\\
+    Surname & \@fillinfont
+      \underline{\makebox[\underlinewidth][l]{\@surname}}\\
+    Gender & Male\ \gender@male\qquad Female \gender@female\\
+    \end{tabular}%
+  }%
+  \par
+  \vspace{\baselineskip}%
+  \noindent
+  Age range:\qquad \@for\@agerange:=\@validageranges\do{%
+    \expandafter\get@agerange\@agerange
+    \@agerange@textt\ \@nameuse{agerange@\@agerange@label}\qquad
+    }%
+  \par
+  \vspace{\baselineskip}%
+  \noindent
+  Address:\par
+  \vspace{\baselineskip}%
+  \noindent
+  {\@fillinfont
+    \begin{tabular}{@{}l@{}}
+    \@address
+    \end{tabular}%
+  }%
+  \par
+  \vspace{\baselineskip}%
+  \noindent
+  Comments:\par
+  \vspace{\baselineskip}%
+  \noindent
+  \setlength{\boxwidth}{\textwidth}%
+  \addtolength{\boxwidth}{-2\fboxsep}%
+  \addtolength{\boxwidth}{-2\fboxrule}%
+  \fbox{\parbox{\boxwidth}{\@fillinfont\@comments}}
+}
+\endinput
