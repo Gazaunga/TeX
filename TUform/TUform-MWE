@@ -1,1 +1,15 @@
+\documentclass{tuform}
+\usepackage[utf8]{inputenc}
 
+
+\begin{document}
+\surname{Talbot}
+\forenames{Nicola Louise Cecilia}
+\gender{female}
+\agerange{31-40}
+\address{School of Computing Sciences\\
+University of East Anglia\\
+Norwich. Norfolk. NR4 7TJ}
+\comments{I like using \LaTeX!}
+\makeform
+\end{document}
