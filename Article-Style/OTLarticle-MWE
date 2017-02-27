@@ -1,0 +1,30 @@
+\documentclass{OTLarticle}
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\title{My Personal Article Class}
+\author{J.M. Ottley}
+\date{February 2017}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead{}     
+\fancyhead[RE]{\rightmark}     
+\fancyhead[LO]{\leftmark}     
+\fancyhead[RO]{\thepage}     
+\fancyhead[LE]{\thepage}
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\kant \clearpage
+\subsection{Sub-Intro}
+\kant \clearpage
+\section{Furthermore}
+\kant \clearpage
+\subsection{Further and More}
+\kant \clearpage
+\section{In Conclusion}
+\kant \clearpage
+\subsection{Conclusiveness}
+\kant \clearpage
+\end{document}
