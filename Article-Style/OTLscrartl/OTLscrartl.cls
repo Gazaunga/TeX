@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{OTLscrart}[2014/08/16 Example LaTeX class]
+\ProvidesClass{OTLscrartl}[2014/08/16 Example LaTeX class]
 \LoadClass[twocolumn]{scrartcl}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{scrlayer-scrpage}
