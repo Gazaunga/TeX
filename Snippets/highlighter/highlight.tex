@@ -1,0 +1,10 @@
+\usepackage[svgnames]{xcolor}
+\usepackage{soul}
+\sethlcolor{LightBlue}
+\makeatletter
+\def\SOUL@hlpreamble{%
+\setul{\dimexpr\dp\strutbox+2pt}{\dimexpr\ht\strutbox+\dp\strutbox+2pt\relax}
+\let\SOUL@stcolor\SOUL@hlcolor
+\SOUL@stpreamble
+}
+\makeatother
