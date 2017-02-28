@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{arrows,shapes}
+
+\usepackage{wine}
+
+\begin{document}
+\title{\LaTeX{} Wine Stains}
+\author{LianTze Lim}
+\renewcommand{\today}{24 February 2016}
+\maketitle
+
+\wineAm{1}{1.0}{0}{5.5cm}{3cm}
+ 
+\section{Introduction}
+Now you can add wine stains to your \LaTeX{} documents, too! \texttt{wine.sty} is really Hanno Rein's \texttt{coffee4.sty}\footnote{http://hanno-rein.de}, with all the `\texttt{coffee}' replaced by `\texttt{wine}' in the code, and replaced colour definitions.
+
+You can choose from four different stain types:
+\begin{enumerate}
+  \item $270^\circ$ circle stain with two tiny splashes 
+  \item $60^\circ$ circle stain 
+  \item two splashes with light colours
+  \item and a colourful twin splash.
+\end{enumerate}
+
+\section{Usage}
+To use the package, simply place the \texttt{wine.sty} file in the directory with all of your 
+other \texttt{.tex} files. 
+Then include the following line in the header of your document:
+\begin{verbatim}
+\usepackage{wine}
+\end{verbatim}
+To place a wine stain on a page, put one of the following commands in the source code of the relevant page: 
+\begin{verbatim}
+\wineAm{alpha}{scale}{angle}{xoff}{yoff}
+\wineBm{alpha}{scale}{angle}{xoff}{yoff}
+\wineCm{alpha}{scale}{angle}{xoff}{yoff}
+\wineDm{alpha}{scale}{angle}{xoff}{yoff}
+\end{verbatim}
+where alpha is the transparency factor $\in [0,1]$. The scale factor is {\tt scale}, and the standard is {\tt scale}=1. 
+The angle is in degrees $\in [0,360]$. 
+The position relative to the centre of the page is given by x and y offs \texttt{xoff} and \texttt{yoff}.
+
+\section{Copyright}
+\emph{(The following is Hanno Rein's copyright statement:}
+
+You can freely distribute this package as I do not believe in imaginary property. All stains are self-made, photographed by myself, processed with gimp and traced with Inkscape.
+Donations should be made in coffee only. My address is
+\begin{quote}
+Hanno Rein\\
+DAMTP, CMS\\
+Wilberforce Road\\
+Cambridge CB3 0WA\\
+United Kingdom
+\end{quote}
+See more wine stains on the next pages.
+\wineCm{0.9}{1}{180}{0}{0}
+\newpage
+\wineDm{0.4}{0.5}{90}{0}{0}
+\newpage
+\wineBm{0.7}{1}{0}{0}{0}
+
+\newpage
+\wineAm{0.7}{0.75}{2}{0}{0}
+
+\end{document}
