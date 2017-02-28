@@ -1,0 +1,58 @@
+\documentclass[a4paper,11pt,twoside,openright,parskip=half]{scrbook}
+
+\usepackage[ngerman, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{calc}
+
+\makeatletter
+\newlength \figwidth
+\setlength \figwidth {-3cm}
+\makeatother
+
+\usepackage{geometry}
+\geometry{a4paper, top=30mm, left=30mm, right=55mm, bottom=35mm, marginparwidth=-\figwidth-1em, marginparsep=1em}
+
+\usepackage{marginnote}
+\usepackage{sidenotes}
+\renewcommand*{\marginfont}{\footnotesize}
+
+
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[strict]{changepage}
+\newenvironment{widefigure}[1][tbp]
+{\begin{figure}[#1]\begin{adjustwidth*}{0cm}{\figwidth}\centering}%
+        {\end{adjustwidth*}\end{figure}}
+
+\usepackage{blindtext}
+% COMMAND
+\newcommand{\smallside}[1]{\sidenote[][0pt]{\footnotesize{#1}}}
+\makeatletter
+\RenewDocumentCommand \@sidenotes@placemarginal { m m }
+{%
+  \IfNoValueOrEmptyTF{#1}
+    {\marginpar[\raggedleftmarginnote #2]{\raggedrightmarginnote #2}}
+    {\marginnote{#2}[#1]}%
+}
+\makeatother
+\begin{document}
+    \begin{widefigure}[tbp]
+        \includegraphics[width=\linewidth, height=9cm]{example-image}
+        \caption{Some figure caption in here that does not really matter but should be long enough to fill the line and also break}
+    \end{widefigure}
+    \blindtext
+    \marginnote{some long text for the margin}
+    \blindtext
+    \smallside{some long text for the margin}
+    \blindtext
+    %\newpage
+    \begin{widefigure}[tbp]
+        \includegraphics[width=\linewidth, height=9cm]{example-image}
+        \caption{Some figure caption in here that does not really matter but should be long enough to fill the line and also break}
+    \end{widefigure}
+    \marginnote{some extremely long text for the margin going on many lines}
+    \blindtext
+    \smallside{some extremely long text for the margin going on many lines}
+    \blindtext
+\end{document}
