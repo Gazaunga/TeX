@@ -1,0 +1,80 @@
+% My general-use, \LaTeX document, from which I generally start off
+\documentclass[paper=a4,twoside=true,DIV=calc]{scrartcl}
+\usepackage[utf8]{inputenc}					% let me write my name properly
+\usepackage{lmodern}						% use Latin Modern Family of Fonts
+\usepackage[T1]{fontenc}					% properly encode western European fonts
+\usepackage{microtype}						% refine typography
+\usepackage[automark]{scrlayer-scrpage}		                % use this instead of deprecated fancyhdr
+\usepackage[english]{babel}					% make language switching easy
+\usepackage[backend=biber, natbib=true, backref=true, url=false]{biblatex}	% modern bibliography
+	\addbibresource{/afs/psi.ch/user/h/haberthuer/Documents/library.bib}	% from this file kept organized in Mendeley
+\usepackage{graphicx}                   			% we generally have figures
+\usepackage{subfig}                     			% and subfigures
+\usepackage[detect-all=true,list-units=single,binary-units=true]{siunitx} % use SI units
+\usepackage{textcomp} 						% Get rid of warning if using \micro with siunitx, as per http://tex.stackexchange.com/a/74673/828
+\usepackage{booktabs}						% nice tables
+\usepackage{todonotes}						% mark stuff do to later with \todo{stuff\ldots}
+\usepackage{tikz}                       			% we like to draw
+\usepackage{pgfplots}						% we like nice plots
+	\pgfplotsset{compat=newest}			
+	\usepgfplotslibrary{colorbrewer}    			% with proper colors
+\usepackage[markifdirty, markifdraft]{gitinfo2}                 % use git information
+\usepackage{csquotes}						% make quoting stuff easy
+\usepackage{listings}						% use nice listings
+\usepackage{sidenotes}						% we prefer side- to footnotes
+\usepackage{blindtext}						% we don't use 'blindtext' in general, but it makes *this* document look nice
+\usepackage[colorlinks=true]{hyperref}			        % (colored) links in documents are nice
+
+% Git stuff
+\renewcommand{\gitMark}{\gitBranch @\gitAbbrevHash\ committed on \gitAuthorIsoDate} % note at page bottom if document is dirty or in draft mode
+\ifoot{Version \gitAbbrevHash}					% Git hash in inner footer from scrlayer-scrpage
+
+% Helpers
+\newcommand{\imsize}{\linewidth}				% general figure size
+\newcommand{\subfigureautorefname}{\figureautorefname}		% make it possible to use \autoref{label} with subfigures
+\newcommand{\ie}{i.e.\ }					% simplify often used abbreviation
+\newcommand{\eg}{e.g.\ }
+
+% Scalebar stuff, needed when using https://github.com/habi/latex/blob/master/draw_a_scalebar.py
+\newlength\imagewidth
+\newlength\imagescale
+
+%Configure listings
+\lstset{basicstyle=\footnotesize,
+	breakatwhitespace=true,
+	breaklines=true,
+	keywordstyle=\color{blue},
+	stringstyle=\color{orange},
+	commentstyle=\color{red},
+	numbers=left,
+	numbersep=5pt,
+	stepnumber=2,
+	numberstyle=\tiny\color{gray},	
+	rulecolor=\color{black},
+	showspaces=false,
+	title=\lstname,
+	backgroundcolor=\color{gray!10},
+	frame=lines}
+
+\title{Awesome document}
+\subtitle{Version \gitAbbrevHash}
+\author{David Haberthür%
+	\thanks{\href{mailto:david.haberthuer@psi.ch}{david.haberthuer@psi.ch}, +41 56 310 31 80}%
+	\and%
+	Someone else, maybe%
+	\thanks{\href{mailto:user@domain.com}{user@domain.com}, +1 23 45 67 890}%
+	}
+\date{\today}
+
+% recalculate type area if we did something funky with the fonts
+\recalctypearea
+
+\begin{document}
+
+\maketitle
+
+\blinddocument
+
+\printbibliography
+
+\end{document}
