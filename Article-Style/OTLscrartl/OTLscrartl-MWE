@@ -1,0 +1,12 @@
+\documentclass{OTLscrartl}
+%\usepackage[utf8]{inputenc}
+
+
+\begin{document}
+
+
+
+\section{Introduction}
+ \syncwithnotecolumns[paragraphs]
+\blinddocument
+\end{document}
