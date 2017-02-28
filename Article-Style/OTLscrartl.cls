@@ -1,0 +1,64 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{OTLscrart}[2014/08/16 Example LaTeX class]
+\LoadClass[twocolumn]{scrartcl}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{scrlayer-scrpage}
+\RequirePackage{scrlayer-notecolumn}
+\RequirePackage{lmodern}
+\RequirePackage{blindtext}
+\RequirePackage{ragged2e}
+%% step 1: counter
+\newcounter{snmark}
+\setcounter{snmark}{0}
+
+
+%% step 2: hanging sidenotes, definition from tugboat
+\makeatletter
+\newcommand*{\hangfrom}[1]{%
+  \setbox\@tempboxa\hbox{{#1}}%
+  \hangindent \wd\@tempboxa
+  \noindent\box\@tempboxa}
+\makeatletter
+
+%% step 3: define sidenote marks in the text
+\newcommand{\makesidenotemark}{%
+  \textsuperscript{\thesnmark}
+}%
+
+
+%% step 4: and now the definition of sidenotes
+\newcommand{\sidenote}[1]{%
+  \refstepcounter{snmark}% Zähler erhöhen
+  \makesidenotemark{}% Nummer im Text setzen.
+  \makenote[paragraphs]{%
+    \hangfrom{%
+      \makebox[1em][l]{%
+        \thesnmark}
+            }
+        \protect\RaggedRight{} #1}% Text setzen im Rand
+}
+
+
+%% this is, except for the values (».7«) from scrguide.pdf to define
+%% the notecolumn.
+
+\newlength{\paragraphscolwidth}
+\AfterCalculatingTypearea{%
+\setlength{\paragraphscolwidth}{.4\textwidth}%
+\addtolength{\paragraphscolwidth}{-\marginparsep}%
+}
+\recalctypearea
+\DeclareNewNoteColumn[%
+position=\oddsidemargin+1in
++.7\textwidth
++\marginparsep,
+width=\paragraphscolwidth,
+font=\footnotesize
+]{paragraphs}
+\endinput
+
+
+
+
+%% Delete all sidenotes:
+%\renewcommand{\sidenote}[1]{\relax}
