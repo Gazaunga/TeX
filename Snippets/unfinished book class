@@ -1,0 +1,35 @@
+\if@compatibility\else
+\DeclareOption{a4paper}
+{\setlength\paperheight {297mm}%
+\setlength\paperwidth {210mm}}
+\DeclareOption{a5paper}
+{\setlength\paperheight {210mm}%
+\setlength\paperwidth {148mm}}
+\DeclareOption{b5paper}
+{\setlength\paperheight {250mm}%
+\setlength\paperwidth {176mm}}
+\DeclareOption{letterpaper}
+{\setlength\paperheight {11in}%
+\setlength\paperwidth {8.5in}}
+\DeclareOption{legalpaper}
+{\setlength\paperheight {14in}%
+\setlength\paperwidth {8.5in}}
+\DeclareOption{tupaper}
+{\setlength\paperheight {26.67cm}%
+\setlength\paperwidth {20.32cm}}
+
+%require titlepage
+\DeclareOption{titlepage}{\@titlepagetrue}
+\if@compatibility\else
+\DeclareOption{notitlepage}{\@titlepagefalse}
+\fi
+
+%chapter must start on right side
+(!article)\if@compatibility
+(book)\@openrighttrue
+(!article)\else
+(!article)\DeclareOption{openright}{\@openrighttrue}
+(!article)\DeclareOption{openany}{\@openrightfalse}
+(!article)\fi
+
+%
