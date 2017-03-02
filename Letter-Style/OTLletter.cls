@@ -12,3 +12,4 @@
 \DeclareOption{\email{jeremy.ottley@gmail.com}}
 \date{\today}
 
+\endinput
