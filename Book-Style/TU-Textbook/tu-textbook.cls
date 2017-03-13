@@ -19,6 +19,7 @@
 \RequirePackage{etoolbox}
 \setcounter{tocdepth}{1}
 \RequirePackage{geometry}
+\RequirePackage{fancyhdr}
 %%%%%%%%%%%%%%%%
 \def\@maketitle{%
 \begingroup
@@ -120,4 +121,11 @@ Puzzles for the Mind}}\par
             \fi}};}, 
     #1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead{}     
+\fancyhead[RE]{\rightmark}     
+\fancyhead[LO]{\leftmark}     
+\fancyhead[RO]{\thepage}     
+\fancyhead[LE]{\thepage}
 \endinput
