@@ -6,7 +6,7 @@
 \ProcessOptions \relax
 
 
-\LoadClass[nols,a4paper,letterpaper,symmetric,justified,marginals=raggedouter,notoc,usenames,dvipsnames,svgnames,table]{tufte-book}
+\LoadClass[nols,letterpaper,symmetric,justified,marginals=raggedouter,notoc,usenames,dvipsnames,svgnames,table]{tufte-book}
 \RequirePackage{hyperref}
 \RequirePackage{microtype}
 \RequirePackage{graphicx}
