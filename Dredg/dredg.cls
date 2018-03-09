@@ -8,6 +8,10 @@
 \RequirePackage[english]{babel}
 \RequirePackage{fontspec,titlesec,xltxtra,xunicode}
 \RequirePackage{fontawesome}
+\RequirePackage{color}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{rgb}{0,0,0.5}
 \RequirePackage[hidelinks]{hyperref}
 \hypersetup{ colorlinks,
 linkcolor=darkblue,
